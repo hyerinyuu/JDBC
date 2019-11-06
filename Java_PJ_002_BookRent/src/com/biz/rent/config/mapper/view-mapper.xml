@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.biz.rent.dao.ViewDao">
+
+ 	<select id="findByID" resultType="viewVO">
+ 	
+ 		SELECT 
+ 		
+ 		RENT_SEQ,
+		U_CODE,
+		U_NAME,
+		B_CODE,
+		B_NAME,
+		RENT_DATE,
+		RENT_RETURN_YN
+		
+ 		FROM view_rent
+  		WHERE RENT_SEQ = #{rent_seq}
+ 		
+ 	</select>
+ 	
+ 	
+ 
+ </mapper> 

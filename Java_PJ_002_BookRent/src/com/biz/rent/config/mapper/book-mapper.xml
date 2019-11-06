@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.biz.rent.dao.BookDao">
+ 
+ 	<select id="getMaxCode" resultType="String">
+ 		SELECT MAX(b_code) FROM tbl_books
+ 	</select>
+ 	
+ 	<select id="selectAll" resultType="BookDTO">
+ 		
+ 		SELECT 
+	 		B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 	
+ 	</select>
+ 	
+ 	<select id="findByEName" resultType="BookDTO">
+ 		
+ 		SELECT 
+	 		B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 		WHERE B_NAME = #{b_name}
+ 	
+ 	</select>
+ 	
+ 	
+ 	<select id="findByName" resultType="BookDTO">
+ 		SELECT 
+	 		B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 		WHERE B_NAME LIKE '%' || #{b_name} || '%'
+ 	
+ 	</select>
+ 	
+ 	<select id="findByEAuther" resultType="BookDTO">
+ 	
+	 	SELECT 
+	 		B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 		WHERE B_AUTHER = #{b_auther}
+ 	
+ 	</select>
+ 	
+ 	<select id="findByAuther" resultType="BookDTO">
+ 		SELECT 
+	 		B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 		WHERE B_AUTHER LIKE '%' || #{b_auther} || '%'
+ 	
+ 	</select>
+ 	<select id="findById" resultType="BookDTO">
+ 	
+ 		SELECT 
+	 		B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 		WHERE B_CODE = #{b_code}
+		 	
+ 	</select>
+ 	
+ 	<select id="findByNameAndAuth" resultType="BookDTO">
+ 	
+ 		SELECT
+ 			B_CODE,
+			B_NAME,
+			B_AUTHER,
+			B_COMP,
+			B_YEAR,
+			B_IPRICE,
+			B_RPRICE
+ 		FROM tbl_books
+ 		WHERE B_NAME LIKE '%' || #{b_code} || '%' AND B_AUTHER LIKE '%' || #{b_auther} || '%'  
+ 	
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="BookDTO">
+ 	
+ 		INSERT INTO tbl_books(B_CODE,B_NAME,B_AUTHER,B_COMP,B_YEAR,B_IPRICE,B_RPRICE)
+ 		VALUES(
+ 		#{b_code,jdbcType=VARCHAR},
+ 		#{b_name,jdbcType=VARCHAR},
+ 		#{b_auther,jdbcType=VARCHAR},
+ 		#{b_comp,jdbcType=VARCHAR},
+ 		#{b_year,jdbcType=VARCHAR},
+ 		#{b_iprice,jdbcType=VARCHAR},
+ 		#{b_rprice,jdbcType=VARCHAR}
+ 		)
+ 	
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="BookDTO">
+ 		
+ 		UPDATE tbl_books SET
+ 			B_CODE = #{b_code},
+			B_NAME = #{b_name},
+			B_AUTHER = #{b_auther},
+			B_COMP = #{b_comp},
+			B_YEAR = #{b_year},
+			B_IPRICE = #{b_iprice},
+			B_RPRICE = #{b_rprice}
+		WHERE B_CODE = #{b_code}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="BookDTO">
+ 	
+ 		DELETE FROM tbl_books
+ 		WHERE B_CODE = #{b_code}
+ 		
+ 	</delete>
+ 	
+ 
+ </mapper> 

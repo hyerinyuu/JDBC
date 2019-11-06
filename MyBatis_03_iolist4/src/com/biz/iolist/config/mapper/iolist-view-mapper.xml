@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.biz.iolist.dao.IolistViewDao">
+  	<select id="selectAll" resultType="IolistVO">
+  	
+  		SELECT * FROM view_iolist
+  	
+  	</select>
+  	
+  	<select id="findById" resultType="IolistVO">
+  		
+  		SELECT * FROM view_iolist
+  		WHERE IO_SEQ = #{io_seq}
+  		
+  	
+  	</select>
+  	
+	 <select id="findByDcode" resultType="IolistVO">
+  		
+  		SELECT * FROM view_iolist
+  		WHERE IO_DCODE = #{io_dcode}
+  		
+  	
+  	</select>
+	
+	<select id="findByDname" resultType="IolistVO">
+  	
+  		SELECT * FROM view_iolist
+  		WHERE IO_NAME LIKE '%' || #{io_name} || '%'
+  		
+  	
+  	</select>
+	
+	<select id="findByPcode" resultType="IolistVO">
+  		
+  		SELECT * FROM view_iolist
+  		WHERE IO_PCODE = #{io_pcode}
+  		
+  	</select>
+	
+	<select id="findByPname" resultType="IolistVO">
+  	
+  		SELECT * FROM view_iolist
+  		WHERE IO_PNAME LIKE '%' || #{io_pname} || '%'
+  		
+  	</select>
+	
+  	
+  
+  </mapper>

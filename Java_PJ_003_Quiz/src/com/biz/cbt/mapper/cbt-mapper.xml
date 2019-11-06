@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.biz.dbms.dao.QuizDao">
+ 
+ 	<select id="selectAll">
+ 	
+	 	SELECT 
+			CB_CODE,
+			CB_QUEST,
+			CB_ONE,
+			CB_TWO,
+			CB_THREE,
+			CB_FOUR,
+			CB_RA
+	 	FROM tbl_cbt
+	 	
+ 	</select>
+ 	
+ 	<select id="findById">
+ 		SELECT 
+ 			CB_CODE,
+			CB_QUEST,
+			CB_ONE,
+			CB_TWO,
+			CB_THREE,
+			CB_FOUR,
+			CB_RA
+ 		FROM tbl_cbt
+ 		WHERE CB_CODE = #{cb_code}
+ 	
+ 	</select>
+ 	
+ 	<insert id="insert">
+ 	
+ 		INSERT INTO tbl_cbt(CB_CODE,CB_QUEST,CB_ONE,CB_TWO,CB_THREE,CB_FOUR,CB_RA)
+ 		VALUES(
+ 			#{cb_code},
+			#{cb_quest},
+			#{cb_one},
+			#{cb_two},
+			#{cb_three},
+			#{cb_four},
+			#{cb_ra}
+			)
+ 		
+ 	</insert>
+ 	
+ 	<update id="update">
+ 		
+ 		UPDATE tbl_cbt SET
+ 		
+ 			CB_CODE = #{cb_code},
+			CB_QUEST = #{cb_quest},
+			CB_ONE = #{cb_one},
+			CB_TWO = #{cb_two},
+			CB_THREE = #{cb_three},
+			CB_FOUR = #{cb_four},
+			CB_RA = #{cb_ra}
+		
+		WHERE CB_CODE = #{cb_code}
+	
+ 	</update>
+ 	
+ 	<delete id="delete">
+ 	
+ 		DELETE FROM tbl_cbt
+		WHERE CB_CODE = #{cb_code}
+ 		
+ 	</delete>
+ 
+ </mapper> 
